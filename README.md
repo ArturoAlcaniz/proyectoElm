@@ -5,7 +5,7 @@ durante el proyecto Juegos2020 que se llevo acabo durante la asignatura Diseño 
 
 Para ejecutar:
 
-Abrir el TresEnRaya.html en un navegador
+Abrir el src/TresEnRaya.html en un navegador
 
 Para editar o compilar:
 

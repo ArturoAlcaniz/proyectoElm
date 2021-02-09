@@ -4475,6 +4475,7 @@ var $elm$core$Basics$LT = {$: 'LT'};
 var $author$project$TresEnRaya$Turno = function (user) {
 	return {user: user};
 };
+var $elm$core$Basics$append = _Utils_append;
 var $elm$core$Array$Array_elm_builtin = F4(
 	function (a, b, c, d) {
 		return {$: 'Array_elm_builtin', a: a, b: b, c: c, d: d};
@@ -4646,10 +4647,12 @@ var $author$project$TresEnRaya$Usuario = function (name) {
 };
 var $author$project$TresEnRaya$player1 = $author$project$TresEnRaya$Usuario('Jugador 1');
 var $author$project$TresEnRaya$init = _Utils_Tuple2(
-	$author$project$TresEnRaya$Turno($author$project$TresEnRaya$player1),
-	$elm$core$Array$fromList(
-		_List_fromArray(
-			['', '', '', '', '', '', '', '', ''])));
+	'Turno del usuario ' + $author$project$TresEnRaya$Turno($author$project$TresEnRaya$player1).user.name,
+	_Utils_Tuple2(
+		$author$project$TresEnRaya$Turno($author$project$TresEnRaya$player1),
+		$elm$core$Array$fromList(
+			_List_fromArray(
+				['', '', '', '', '', '', '', '', '']))));
 var $elm$core$Result$Err = function (a) {
 	return {$: 'Err', a: a};
 };
@@ -4678,7 +4681,6 @@ var $elm$core$Maybe$Just = function (a) {
 var $elm$core$Maybe$Nothing = {$: 'Nothing'};
 var $elm$core$String$all = _String_all;
 var $elm$core$Basics$and = _Basics_and;
-var $elm$core$Basics$append = _Utils_append;
 var $elm$json$Json$Encode$encode = _Json_encode;
 var $elm$core$String$fromInt = _String_fromNumber;
 var $elm$core$String$join = F2(
@@ -5413,7 +5415,16 @@ var $author$project$TresEnRaya$tableroCheckerPlayer1 = function (_v0) {
 		A2($elm$core$Array$get, 4, tablero)) === 'X') && (A2(
 		$elm$core$Maybe$withDefault,
 		'',
-		A2($elm$core$Array$get, 8, tablero)) === 'X'))) ? true : false))))));
+		A2($elm$core$Array$get, 8, tablero)) === 'X'))) ? true : (((A2(
+		$elm$core$Maybe$withDefault,
+		'',
+		A2($elm$core$Array$get, 2, tablero)) === 'X') && ((A2(
+		$elm$core$Maybe$withDefault,
+		'',
+		A2($elm$core$Array$get, 4, tablero)) === 'X') && (A2(
+		$elm$core$Maybe$withDefault,
+		'',
+		A2($elm$core$Array$get, 6, tablero)) === 'X'))) ? true : false)))))));
 };
 var $author$project$TresEnRaya$tableroCheckerPlayer2 = function (_v0) {
 	var tablero = _v0.tablero;
@@ -5480,24 +5491,55 @@ var $author$project$TresEnRaya$tableroCheckerPlayer2 = function (_v0) {
 		A2($elm$core$Array$get, 4, tablero)) === 'O') && (A2(
 		$elm$core$Maybe$withDefault,
 		'',
-		A2($elm$core$Array$get, 8, tablero)) === 'O'))) ? true : false))))));
+		A2($elm$core$Array$get, 8, tablero)) === 'O'))) ? true : (((A2(
+		$elm$core$Maybe$withDefault,
+		'',
+		A2($elm$core$Array$get, 2, tablero)) === 'O') && ((A2(
+		$elm$core$Maybe$withDefault,
+		'',
+		A2($elm$core$Array$get, 4, tablero)) === 'O') && (A2(
+		$elm$core$Maybe$withDefault,
+		'',
+		A2($elm$core$Array$get, 6, tablero)) === 'O'))) ? true : false)))))));
 };
 var $author$project$TresEnRaya$update = F2(
 	function (msg, model) {
 		var divElement = msg.a;
-		return $author$project$TresEnRaya$tableroCheckerPlayer1(
-			{tablero: model.b}) ? _Utils_Tuple2(model.a, model.b) : ($author$project$TresEnRaya$tableroCheckerPlayer2(
-			{tablero: model.b}) ? _Utils_Tuple2(model.a, model.b) : ((_Utils_eq(model.a.user, $author$project$TresEnRaya$player1) && (A2(
+		return (A2($elm$core$String$contains, 'Turno', model.a) && (_Utils_eq(model.b.a.user, $author$project$TresEnRaya$player1) && ((A2(
 			$elm$core$Maybe$withDefault,
 			'',
-			A2($elm$core$Array$get, divElement, model.b)) === '')) ? _Utils_Tuple2(
-			$author$project$TresEnRaya$Turno($author$project$TresEnRaya$player2),
-			A3($elm$core$Array$set, divElement, 'X', model.b)) : ((_Utils_eq(model.a.user, $author$project$TresEnRaya$player2) && (A2(
+			A2($elm$core$Array$get, divElement, model.b.b)) === '') && $author$project$TresEnRaya$tableroCheckerPlayer1(
+			{
+				tablero: A3($elm$core$Array$set, divElement, 'X', model.b.b)
+			})))) ? _Utils_Tuple2(
+			'' + (model.b.a.user.name + ' ha ganado la partida'),
+			_Utils_Tuple2(
+				model.b.a,
+				A3($elm$core$Array$set, divElement, 'X', model.b.b))) : ((A2($elm$core$String$contains, 'Turno', model.a) && (A2($elm$core$String$contains, 'Turno', model.a) && (_Utils_eq(model.b.a.user, $author$project$TresEnRaya$player2) && ((A2(
 			$elm$core$Maybe$withDefault,
 			'',
-			A2($elm$core$Array$get, divElement, model.b)) === '')) ? _Utils_Tuple2(
-			$author$project$TresEnRaya$Turno($author$project$TresEnRaya$player1),
-			A3($elm$core$Array$set, divElement, 'O', model.b)) : _Utils_Tuple2(model.a, model.b))));
+			A2($elm$core$Array$get, divElement, model.b.b)) === '') && $author$project$TresEnRaya$tableroCheckerPlayer2(
+			{
+				tablero: A3($elm$core$Array$set, divElement, 'O', model.b.b)
+			}))))) ? _Utils_Tuple2(
+			'' + (model.b.a.user.name + ' ha ganado la partida'),
+			_Utils_Tuple2(
+				model.b.a,
+				A3($elm$core$Array$set, divElement, 'O', model.b.b))) : ((A2($elm$core$String$contains, 'Turno', model.a) && (_Utils_eq(model.b.a.user, $author$project$TresEnRaya$player1) && (A2(
+			$elm$core$Maybe$withDefault,
+			'',
+			A2($elm$core$Array$get, divElement, model.b.b)) === ''))) ? _Utils_Tuple2(
+			'Turno del usuario ' + $author$project$TresEnRaya$Turno($author$project$TresEnRaya$player2).user.name,
+			_Utils_Tuple2(
+				$author$project$TresEnRaya$Turno($author$project$TresEnRaya$player2),
+				A3($elm$core$Array$set, divElement, 'X', model.b.b))) : ((A2($elm$core$String$contains, 'Turno', model.a) && (_Utils_eq(model.b.a.user, $author$project$TresEnRaya$player2) && (A2(
+			$elm$core$Maybe$withDefault,
+			'',
+			A2($elm$core$Array$get, divElement, model.b.b)) === ''))) ? _Utils_Tuple2(
+			'Turno del usuario ' + $author$project$TresEnRaya$Turno($author$project$TresEnRaya$player1).user.name,
+			_Utils_Tuple2(
+				$author$project$TresEnRaya$Turno($author$project$TresEnRaya$player1),
+				A3($elm$core$Array$set, divElement, 'O', model.b.b))) : _Utils_Tuple2(model.a, model.b))));
 	});
 var $author$project$TresEnRaya$Change = function (a) {
 	return {$: 'Change', a: a};
@@ -5558,7 +5600,7 @@ var $author$project$TresEnRaya$view = function (model) {
 							]),
 						_List_fromArray(
 							[
-								$elm$html$Html$text('Turno del usuario ' + model.a.user.name)
+								$elm$html$Html$text(model.a)
 							]))
 					])),
 				A2(
@@ -5584,7 +5626,7 @@ var $author$project$TresEnRaya$view = function (model) {
 								'' + A2(
 									$elm$core$Maybe$withDefault,
 									'',
-									A2($elm$core$Array$get, 0, model.b)))
+									A2($elm$core$Array$get, 0, model.b.b)))
 							])),
 						A2(
 						$elm$html$Html$div,
@@ -5601,7 +5643,7 @@ var $author$project$TresEnRaya$view = function (model) {
 								'' + A2(
 									$elm$core$Maybe$withDefault,
 									'',
-									A2($elm$core$Array$get, 1, model.b)))
+									A2($elm$core$Array$get, 1, model.b.b)))
 							])),
 						A2(
 						$elm$html$Html$div,
@@ -5618,7 +5660,7 @@ var $author$project$TresEnRaya$view = function (model) {
 								'' + A2(
 									$elm$core$Maybe$withDefault,
 									'',
-									A2($elm$core$Array$get, 2, model.b)))
+									A2($elm$core$Array$get, 2, model.b.b)))
 							])),
 						A2(
 						$elm$html$Html$div,
@@ -5635,7 +5677,7 @@ var $author$project$TresEnRaya$view = function (model) {
 								'' + A2(
 									$elm$core$Maybe$withDefault,
 									'',
-									A2($elm$core$Array$get, 3, model.b)))
+									A2($elm$core$Array$get, 3, model.b.b)))
 							])),
 						A2(
 						$elm$html$Html$div,
@@ -5652,7 +5694,7 @@ var $author$project$TresEnRaya$view = function (model) {
 								'' + A2(
 									$elm$core$Maybe$withDefault,
 									'',
-									A2($elm$core$Array$get, 4, model.b)))
+									A2($elm$core$Array$get, 4, model.b.b)))
 							])),
 						A2(
 						$elm$html$Html$div,
@@ -5669,7 +5711,7 @@ var $author$project$TresEnRaya$view = function (model) {
 								'' + A2(
 									$elm$core$Maybe$withDefault,
 									'',
-									A2($elm$core$Array$get, 5, model.b)))
+									A2($elm$core$Array$get, 5, model.b.b)))
 							])),
 						A2(
 						$elm$html$Html$div,
@@ -5686,7 +5728,7 @@ var $author$project$TresEnRaya$view = function (model) {
 								'' + A2(
 									$elm$core$Maybe$withDefault,
 									'',
-									A2($elm$core$Array$get, 6, model.b)))
+									A2($elm$core$Array$get, 6, model.b.b)))
 							])),
 						A2(
 						$elm$html$Html$div,
@@ -5703,7 +5745,7 @@ var $author$project$TresEnRaya$view = function (model) {
 								'' + A2(
 									$elm$core$Maybe$withDefault,
 									'',
-									A2($elm$core$Array$get, 7, model.b)))
+									A2($elm$core$Array$get, 7, model.b.b)))
 							])),
 						A2(
 						$elm$html$Html$div,
@@ -5720,7 +5762,7 @@ var $author$project$TresEnRaya$view = function (model) {
 								'' + A2(
 									$elm$core$Maybe$withDefault,
 									'',
-									A2($elm$core$Array$get, 8, model.b)))
+									A2($elm$core$Array$get, 8, model.b.b)))
 							]))
 					]))
 			]));
